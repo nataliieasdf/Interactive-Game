@@ -41,6 +41,17 @@ p{
 }
 
 .bothalf{
+	position: absolute;
+	z-index: 2;
+}
+
+.fox{
 	position: relative;
-	z-index:2;
+	z-index: 3;
+}
+
+
+
+.hide{
+	opacity: 0;
 }
