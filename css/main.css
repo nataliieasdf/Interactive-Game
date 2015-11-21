@@ -12,6 +12,13 @@
 
 body{
 	background-color: #afecd1;
+	background-image: url('../img/grass.png');
+	background-repeat: repeat;
+}
+
+.mxW{
+	max-width: 750px;
+	margin: 0 auto;
 }
 
 .player {
@@ -22,17 +29,21 @@ body{
 	bottom: 0;
 	left:0;
 	right:0;
+	position:relative;
+/*	overflow: hidden;*/
 }
 
 h1{
 	font-family: Radical;
 	text-align: center;
 	font-size: 82px;
+	margin:0;
 }
 
 p{	
 	font-family: pixel;
 	font-size:18px;
+	text-align: left;
 }
 
 .tophalf{
@@ -41,15 +52,50 @@ p{
 }
 
 .bothalf{
-	position: absolute;
+	position: relative;
 	z-index: 2;
 }
 
-.fox{
-	position: relative;
-	z-index: 3;
+
+
+.northbush{
+	position: absolute;
+	z-index: -1;
+	top: 70px;
+	left: 304px;
+}
+.eastbush{
+	position:absolute;
+	z-index: 1;
+	top: 310px;
+	right: 38px;
 }
 
+.southbush{
+	position:absolute;
+	z-index: 1;
+	bottom: 20px;
+	left: 304px;
+}
+
+.westbush{
+	position:absolute;
+	z-index: 1;
+	top: 310px;
+	left: 28px;
+}
+
+.fox{
+	position: absolute;
+	z-index: 1;
+	max-height:750px;
+	max-width: 750px;
+	top: 50%;
+	bottom:50%;
+	left:0;
+	right:0;
+
+}
 
 
 .hide{
