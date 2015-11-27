@@ -15,15 +15,28 @@
     <body>
         <h1>Forest Run</h1>
     <div class="player">
-        <img class="bg tophalf" src="img/topTrees.png">
-        <img class="bg bothalf" src="img/botTrees.png">
-        <div>
-            <img class="fox mxW" src="img/fox.png">
-            <img class="bush mxW northbush" src="img/bush.png">
-            <img class="bush mxW eastbush" src="img/bush.png">
-            <img class="bush mxW southbush" src="img/bush.png">
-            <img class="bush mxW westbush" src="img/bush.png">
+
+        <div class="starter">
+            <button type="button" class="start">Start</button>
         </div>
+
+        <!-- Background Elements -->
+        <img class="bg topHalf" src="img/topTrees.png">
+        <img class="bg botHalf" src="img/botTrees.png">
+
+
+        <div>
+            <img class="fox mxW" id="fox" src="img/fox.png">
+            <img class="bush mxW northBush" src="img/bush.png">
+            <img class="bush mxW eastBush" src="img/bush.png">
+            <img class="bush mxW southBush" src="img/bush.png">
+            <img class="bush mxW westBush" src="img/bush.png">
+        </div>
+
+        <div>
+            <img class="fire" src="img/fire.png">
+        </div>
+
     </div>
     
     <div class="mxW">
@@ -32,6 +45,8 @@
 
 
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script type="text/javascript" src="js/vendor/jquery-collision.min.js"></script>
 
         <script src="js/main.js"></script>
     </body>
