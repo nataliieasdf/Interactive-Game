@@ -38,3 +38,6 @@ $(document).ready(function() {
 
 
 
+
+
+// Collision http://stackoverflow.com/questions/5419134/how-to-detect-if-two-divs-touch-with-jquery
