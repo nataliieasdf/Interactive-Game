@@ -27,16 +27,19 @@ $(document).ready(function() {
 
 	$('.start').on('click', function(e){
 
-		$('.fire').animate({top:'-=500px'}, 10000);
+		$('.fire').delay(500).animate({top:'-=500px'}, 10000);
 
-		$('.northBush').delay(500).fadeOut('fast');
+		$('.westBush').delay(1000).fadeOut('fast');
+		
+		$('.start').hide('fast');
+
 	});
 
 
 
 });
 
-
+//Score counter - every level completed, add 1
 
 
 
