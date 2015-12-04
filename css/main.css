@@ -135,7 +135,13 @@ h1{
 .fire{
 	position: absolute;
 	z-index: 3;
-	top: 663px;
+	transition: all 2s ease;
+	top: calc(100%-200px);
+
+}
+
+.move-up{
+	top: 0 !important;
 }
 
 .hide{

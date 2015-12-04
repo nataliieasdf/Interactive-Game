@@ -61,13 +61,22 @@ $(document).ready(function() {
 		// var firepos = $('.fire').offset().top;
 		// console.log(firepos);
 
-		var $fire = $('.fire');
+		// $fire.delay(500).animate({top:'-=500px'}, 10000);
 
-		$fire.delay(500).animate({top:'-=500px'}, 10000);
+		var moving = false,
+			$fire = $('.fire');
+
+		$fire.addClass('move-up');
+		$fire.on('transitionend', function(){
+			moving = true;
+
+		})
 
 		function getPosition(){
 			console.log($fire.css('top') );
+			if(!moving){
 			window.requestAnimationFrame(getPosition);
+			}
 		}
 
 
