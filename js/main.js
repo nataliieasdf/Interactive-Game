@@ -52,20 +52,36 @@ $(document).ready(function() {
 
 	$('.start').on('click', function(e){
 
-		var firepos = $('.fire').offset().top;
-		console.log(firepos);
-
-
-		$('.fire').delay(500).animate({top:'-=500px'}, 10000);
-
-
+		$('.start').hide('fast');
 		$('.westBush').delay(1000).fadeOut('fast');
 		
-		$('.start').hide('fast');
 
+
+
+		// var firepos = $('.fire').offset().top;
+		// console.log(firepos);
+
+		var $fire = $('.fire');
+
+		$fire.delay(500).animate({top:'-=500px'}, 10000);
+
+		function getPosition(){
+			console.log($fire.css('top') );
+			window.requestAnimationFrame(getPosition);
+		}
 
 
 	});
+
+	// var overlaps = (function(){
+	// 	function getPosition(elem){
+	// 		var pos = $('#fox').position(),
+	// 		width = $('#fox').width(),
+	// 		height = $('#fox').height();
+	// 		return [ [pos.left, pos.left + width], [pos.top, pos.top + height] ];
+	// 	}
+	// });
+
 
 
 
