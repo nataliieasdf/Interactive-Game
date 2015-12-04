@@ -127,21 +127,15 @@ h1{
 	max-width: 750px;
 	top: 45%;
 	bottom: 55%;
-	left: 0;
-	right: 0;
+	left: 0px;
+	right: 0px;
 
 }
 
 .fire{
 	position: absolute;
 	z-index: 3;
-	transition: all 2s ease;
-	top: calc(100%-200px);
-
-}
-
-.move-up{
-	top: 0 !important;
+	top: 663px;
 }
 
 .hide{

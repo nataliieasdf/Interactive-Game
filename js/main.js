@@ -5,38 +5,60 @@ $(document).ready(function() {
 
 
 	//Fox ready
-    $(document).keydown(function(key) {
+    $(document).on('keydown', function(key) {
         switch(parseInt(key.which,10)) {
 			// Left arrow key pressed
 			case 37:
-				$('#fox').animate({left: "-=50px"}, 'fast');
+				
 
 				var fposL = $('#fox').offset().left;
-					console.log(fposL);
+				var plposL = $('.player').offset().left;
+				console.log(fposL, plposL);
+
+					if (fposL <= plposL){
+						//stop ability to move up
+						 $('#fox').css({right: -plposL});
+					}
+					else {
+						$('#fox').animate({left: "-=50px"}, 'fast');
+					}
+
 				break;
 
 
 
 			// Up Arrow Pressed
 			case 38:
-				$('#fox').animate({top: "-=50px"}, 'fast');
 					var fposT = $('#fox').offset().top;
-					console.log(fposT);
+					var plposT = $('.player').offset().top;
+					console.log(fposT, plposT);
 
-					// if (fposT <= $('#fox').width() ){
-						//stop ability to move up -- fix top position?
-						// alert('stop moving')
-					// }
+					if (fposT <= plposT){
+						//stop ability to move up
+						 $('#fox').animate({top: "0px"}, 'fast');
+					}
+					else {
+						$('#fox').animate({top: "-=50px"}, 'fast');
+					}
 
 				break;
 
 
-
 			// Right Arrow Pressed
 			case 39:
-				$('#fox').animate({right: "-=50px"}, 'fast');
 					var fposR = $('#fox').offset().left + $('.fox').width();
-					console.log(fposR);
+					var plposR = $('.player').offset().left + $('.player').width() - $('.fox').width();
+					console.log(fposR, plposR)
+
+					if (fposR >= plposR){
+						//stop ability to move up
+						 $('#fox').animate({right: -fposR}, 'fast');
+						 // - "$('.fox').width()" +"px"
+					}
+					else {
+						$('#fox').animate({right: "-=50px"}, 'fast');
+					}
+
 
 				break;
 
@@ -44,7 +66,6 @@ $(document).ready(function() {
 			case 40:
 				$('#fox').animate({top: "+=50px"}, 'fast');
 					var fposB = $('#fox').offset().top + $('.fox').height();
-					console.log(fposB);
 				break;
 		}
 	});
@@ -53,47 +74,18 @@ $(document).ready(function() {
 	$('.start').on('click', function(e){
 
 		$('.start').hide('fast');
-		$('.westBush').delay(1000).fadeOut('fast');
+		$('.northBush').delay(1000).fadeOut('fast');
 		
-
-
 
 		// var firepos = $('.fire').offset().top;
 		// console.log(firepos);
-
-		// $fire.delay(500).animate({top:'-=500px'}, 10000);
-
-		var moving = false,
-			$fire = $('.fire');
-
-		$fire.addClass('move-up');
-		$fire.on('transitionend', function(){
-			moving = true;
-
-		})
-
-		function getPosition(){
-			console.log($fire.css('top') );
-			if(!moving){
-			window.requestAnimationFrame(getPosition);
-			}
-		}
-
+		$('.fire').delay(500).animate({top:'-=500px'}, 10000);
 
 	});
 
-	// var overlaps = (function(){
-	// 	function getPosition(elem){
-	// 		var pos = $('#fox').position(),
-	// 		width = $('#fox').width(),
-	// 		height = $('#fox').height();
-	// 		return [ [pos.left, pos.left + width], [pos.top, pos.top + height] ];
-	// 	}
-	// });
-
-
-
-
+	if ( $('.fire').collision('#fox') ){
+		alert("Gameover!")
+	}
 
 
 });
