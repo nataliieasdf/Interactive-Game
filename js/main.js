@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+// var levels = []
+// array should be order which bushes disappear
+
+
+
 	//Fox ready
     $(document).keydown(function(key) {
         switch(parseInt(key.which,10)) {
@@ -35,6 +40,10 @@ $(document).ready(function() {
 
 	});
 
+		var hitList = $('#fox').collision('.fire');
+		if (hitlist = true){
+			console.log("Gameover!");
+		}
 
 
 });
