@@ -97,12 +97,14 @@ var nB = $('.northBush'),
 
  		$('.fire').delay(500).animate( 
  			{top:'-=500px'}, 
+ 			// top value needs to be fposB
  			{duration: 10000, step: function (){
- 					var firepos = $('.fire').offset().top;
- 					var fposB = $('#fox').offset().top + $('.fox').height();
+ 					var firepos = $('.fire').position().top;
+ 					var fposB = $('#fox').position().top + $('.fox').height();
  					console.log(firepos, fposB);
  					if ( firepos < fposB){
-						alert('Game over!');
+						$('.fire').stop(true, true)
+						firepos = fposB;
 					}	
  				}
 
