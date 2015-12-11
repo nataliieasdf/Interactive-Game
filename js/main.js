@@ -10,7 +10,7 @@ var nB = $('.northBush'),
  // eg var goNorth = check fox @ top: 0 ... for each direction
 // var levels = ['goNorth', 'goEast', 'goWest', 'goSouth'];
 
-var levels = []
+// var levels = []
 
 
 
@@ -87,23 +87,47 @@ var levels = []
 		$('.northBush').delay(1000).fadeOut('fast');
 		
 
-		$('.fire').delay(500).animate({top:'-=500px'}, 10000);
+		// var firepos = $('.fire').position().top;
+		// console.log(firepos);
 
-		var firepos = $('.fire').position().top;
-		console.log(firepos);
+		//$('.fire').delay(500).animate( {top:'-=500px'}, 10000 );
+
+ 		// var firepos = $('.fire').offset().top;
+ 		// var fposB = $('#fox').offset().top + $('.fox').height();
+
+ 		$('.fire').delay(500).animate( 
+ 			{top:'-=500px'}, 
+ 			{duration: 10000, step: function (){
+ 					var firepos = $('.fire').offset().top;
+ 					var fposB = $('#fox').offset().top + $('.fox').height();
+ 					console.log(firepos, fposB);
+ 					if ( firepos < fposB){
+						alert('Game over!');
+					}	
+ 				}
+
+ 			} 
 
 
-		while ( $('.fire').is(':animated') ){
-			var firepos = $('.fire').position().top;
-			alert(firepos);
-		}
+ 			);
+
+	
+
+		// var firepos = $('.fire').position().top;
+
+		// for (firepos = firepos; $('.fire').is(':animated'); )
+		// 	{
+			// console.log($('.fire').position().top);
+
+		// need to run lines 97 + 98 every time the fire moves
 
 	});
 
 
 
 
-
+// var firepos = $('.fire').position().top;
+// 	firepos;
 
 
 });
