@@ -96,15 +96,16 @@ var nB = $('.northBush'),
  		// var fposB = $('#fox').offset().top + $('.fox').height();
 
  		$('.fire').delay(500).animate( 
- 			{top:'-=500px'}, 
+ 			{top:'-=700px'}, 
  			// top value needs to be fposB
- 			{duration: 10000, step: function (){
+ 			{duration: 15000, step: function (){
  					var firepos = $('.fire').position().top;
  					var fposB = $('#fox').position().top + $('.fox').height();
- 					console.log(firepos, fposB);
+ 					// console.log(firepos, fposB);
  					if ( firepos < fposB){
-						$('.fire').stop(true, true)
-						firepos = fposB;
+						$('.fire').stop();
+						console.log('Game over!')
+						$('.fire').css({top: fposB});
 					}	
  				}
 
