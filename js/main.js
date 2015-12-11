@@ -1,7 +1,17 @@
 $(document).ready(function() {
 
-// var levels = []
-//
+var nB = $('.northBush'),
+	sB = $('.southBush'),
+	eB = $('.eastBush'),
+	wB = $('.westBush');
+ 
+ // to make the levels variable array, do I need to create a function 
+ // that checks the fox location and the hidden bush location?
+ // eg var goNorth = check fox @ top: 0 ... for each direction
+// var levels = ['goNorth', 'goEast', 'goWest', 'goSouth'];
+
+var levels = []
+
 
 
 	//Fox ready
@@ -77,15 +87,23 @@ $(document).ready(function() {
 		$('.northBush').delay(1000).fadeOut('fast');
 		
 
-		// var firepos = $('.fire').offset().top;
-		// console.log(firepos);
 		$('.fire').delay(500).animate({top:'-=500px'}, 10000);
+
+		var firepos = $('.fire').position().top;
+		console.log(firepos);
+
+
+		while ( $('.fire').is(':animated') ){
+			var firepos = $('.fire').position().top;
+			alert(firepos);
+		}
 
 	});
 
-	if ( $('.fire').collision('#fox') ){
-		alert("Gameover!")
-	}
+
+
+
+
 
 
 });
