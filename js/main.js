@@ -1,9 +1,7 @@
 $(document).ready(function() {
 
-var nB = $('.northBush'),
-	sB = $('.southBush'),
-	eB = $('.eastBush'),
-	wB = $('.westBush');
+var level = 0;
+var levels = [$('.northBush'), $('.southBush'),  $('.eastBush'), $('.westBush')];
  
  // to make the levels variable array, do I need to create a function 
  // that checks the fox location and the hidden bush location?
@@ -12,6 +10,10 @@ var nB = $('.northBush'),
 
 // var levels = []
 
+var origFoxPosTop = $('#fox').offset().top,
+	origFoxPosLeft = $('#fox').offset().left;
+
+var origFirePos = $('.fire').offset().top;
 
 
 	//Fox ready
@@ -46,6 +48,7 @@ var nB = $('.northBush'),
 					if (fposT <= plposT){
 						//stop ability to move up
 						 $('#fox').animate({top: "0px"}, 'fast');
+						  winlevel();
 					}
 					else {
 						$('#fox').animate({top: "-=50px"}, 'fast');
@@ -58,12 +61,13 @@ var nB = $('.northBush'),
 			case 39:
 					var fposR = $('#fox').offset().left + $('.fox').width();
 					var plposR = $('.player').offset().left + $('.player').width() - $('.fox').width();
-					console.log(fposR, plposR)
+					// console.log(fposR, plposR)
 
 					if (fposR >= plposR){
 						//stop ability to move up
 						 $('#fox').animate({right: -fposR}, 'fast');
 						 // - "$('.fox').width()" +"px"
+
 					}
 					else {
 						$('#fox').animate({right: "-=50px"}, 'fast');
@@ -81,19 +85,11 @@ var nB = $('.northBush'),
 	});
     
 
-	$('.start').on('click', function(e){
+    var startgame = function(e){
 
 		$('.start').hide('fast');
-		$('.northBush').delay(1000).fadeOut('fast');
-		
+		levels[level].delay(1000).fadeOut('fast');
 
-		// var firepos = $('.fire').position().top;
-		// console.log(firepos);
-
-		//$('.fire').delay(500).animate( {top:'-=500px'}, 10000 );
-
- 		// var firepos = $('.fire').offset().top;
- 		// var fposB = $('#fox').offset().top + $('.fox').height();
 
  		$('.fire').delay(500).animate( 
  			{top:'-=700px'}, 
@@ -104,33 +100,32 @@ var nB = $('.northBush'),
  					// console.log(firepos, fposB);
  					if ( firepos < fposB){
 						$('.fire').stop();
-						console.log('Game over!')
+						$(document).off('keydown');
 						$('.fire').css({top: fposB});
+						$('.gameover').removeClass('hide');
 					}	
  				}
 
  			} 
+ 		);
+
+	};
+
+	var winlevel = function() {
+		$('.fire').stop().hide().css({top: origFirePos}).show();
+		$('#fox').css({left: 0}).css({top: '45%' });
+// .addClass('hide')
 
 
- 			);
+		$('.start').fadeIn('fast');
 
-	
+		levels[level].delay(2000).fadeIn('slow');
+		level++;
+		startgame();
+	};
 
-		// var firepos = $('.fire').position().top;
+	$('.start').on('click', startgame);
 
-		// for (firepos = firepos; $('.fire').is(':animated'); )
-		// 	{
-			// console.log($('.fire').position().top);
-
-		// need to run lines 97 + 98 every time the fire moves
-
-	});
-
-
-
-
-// var firepos = $('.fire').position().top;
-// 	firepos;
 
 
 });
@@ -139,10 +134,4 @@ var nB = $('.northBush'),
 
 
 
-// Collision http://stackoverflow.com/questions/5419134/how-to-detect-if-two-divs-touch-with-jquery
-
-
-
 // How to make levels
-// How to stop movement
-// Collision help
