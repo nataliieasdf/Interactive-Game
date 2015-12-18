@@ -2,13 +2,8 @@ $(document).ready(function() {
 
 var level = 0;
 var levels = [$('.northBush'), $('.southBush'),  $('.eastBush'), $('.westBush')];
- 
- // to make the levels variable array, do I need to create a function 
- // that checks the fox location and the hidden bush location?
- // eg var goNorth = check fox @ top: 0 ... for each direction
-// var levels = ['goNorth', 'goEast', 'goWest', 'goSouth'];
 
-// var levels = []
+
 
 var origFoxPosTop = $('#fox').offset().top,
 	origFoxPosLeft = $('#fox').offset().left;
@@ -91,6 +86,56 @@ var origFirePos = $('.fire').offset().top;
 		levels[level].delay(1000).fadeOut('fast');
 
 
+
+		// var checkColl = function(){
+		// 	var fireposT = $('.fire').position().top;
+		// 	var fireposL = $('.fire').position().left;
+		// 	var fireposB = $('.fire').position().top + $('.fox').height();
+		// 	var fireposR = $('.fire').position().left + $('.fire').width();
+
+		// 	var fposB = $('#fox').position().top + $('.fox').height();
+		// 	var fposR = $('#fox').position().left + $('.fox').width();
+		// 	var fposT = $('#fox').position().top;
+		// 	var fposL = $('#fox').position().left;
+
+		// 	// console.log(firepos, fposB);
+
+		// 	//when fire moves upward
+		// 	if ( fireposT < fposB){
+		// 		$('.fire').stop();
+		// 		$(document).off('keydown');
+		// 		$('.fire').css({top: fposB});
+		// 		$('.gameover').removeClass('hide');
+		// 	}
+
+		// 	//when fire moves toward left
+		// 	else if (fireposL > fposR){
+		// 		$('.fire').stop();
+		// 		$(document).off('keydown');
+		// 		$('.fire').css({top: fposB});
+		// 		$('.gameover').removeClass('hide');
+		// 	}
+
+		// 	//when fire moves towards right
+		// 	else if (fireposR > fposL){
+		// 		$('.fire').stop();
+		// 		$(document).off('keydown');
+		// 		$('.fire').css({top: fposB});
+		// 		$('.gameover').removeClass('hide');
+		// 	}
+
+		// 	//when fire moves downward
+		// 	else if (fireposB > fposT){
+		// 		$('.fire').stop();
+		// 		$(document).off('keydown');
+		// 		$('.fire').css({top: fposB});
+		// 		$('.gameover').removeClass('hide');
+		// 	}
+
+		// }
+
+
+
  		$('.fire').delay(500).animate( 
  			{top:'-=700px'}, 
  			// top value needs to be fposB
@@ -117,21 +162,23 @@ var origFirePos = $('.fire').offset().top;
 // .addClass('hide')
 
 
-		$('.start').fadeIn('fast');
+		$('.start').fadeIn('fast').delay(1000).on('click', function(e){
 
-		levels[level].delay(2000).fadeIn('slow');
+			$('.start').fadeOut('fast');
+
+		levels[level].delay(1000).fadeIn('slow');
 		level++;
-		startgame();
+		startgame().delay(1000);
+
+		});
 	};
 
 	$('.start').on('click', startgame);
 
 
 
+
+
+
 });
 
-//Score counter - every level completed, add 1
-
-
-
-// How to make levels
